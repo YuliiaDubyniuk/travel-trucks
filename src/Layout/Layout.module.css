@@ -1,11 +1,24 @@
 .appHeader {
-  width: 100%;
-  padding: 20px 0 20px 0;
-  box-shadow:
-    rgba(0, 0, 0, 0.16) 0px 3px 6px,
-    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: var(--elements-bg);
 }
 
-.mainLayout {
-  padding-top: 20px;
+.headerContainer {
+  display: flex;
+  gap: 450px;
+}
+
+.logoLink {
+  display: inline-block;
+  color: var(--sub-title-text);
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 0;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.logoLink span {
+  color: var(--text);
 }

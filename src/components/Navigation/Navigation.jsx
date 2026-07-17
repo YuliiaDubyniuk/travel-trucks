@@ -16,8 +16,8 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className={addClass} to="/movies">
-            Movies
+          <NavLink className={addClass} to="/catalog">
+            Catalog
           </NavLink>
         </li>
       </ul>

@@ -1,0 +1,23 @@
+.btn {
+  color: var(--btn-text);
+  background-color: var(--btn-bg);
+  letter-spacing: -0.5%;
+  border-radius: 200px;
+  border: none;
+  transition: background-color ease-in-out 250ms;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--active-btn);
+}
+
+.small {
+  padding: 16px 43.5px;
+}
+
+.big {
+  padding: 16px 0;
+  width: 100%;
+  text-align: center;
+}

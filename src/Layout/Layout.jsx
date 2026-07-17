@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+import Container from '../components/Container/Container';
 import Navigation from '../components/Navigation/Navigation';
 import css from './Layout.module.css';
 
@@ -6,9 +7,14 @@ const Layout = () => {
   return (
     <>
       <header className={css.appHeader}>
-        <Navigation />
+        <Container className={css.headerContainer}>
+          <Link to="/" className={css.logoLink}>
+            Travel<span>Tracks</span>
+          </Link>
+          <Navigation />
+        </Container>
       </header>
-      <main className={css.mainLayout}>
+      <main>
         <Outlet />
       </main>
     </>

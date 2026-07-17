@@ -1,23 +1,24 @@
 .navList {
   display: flex;
-  gap: 30px;
-  margin-left: 50px;
+  gap: 32px;
 }
 
 .navLink {
-  padding: 5px 0 1px;
-  text-decoration: none;
+  display: inline-block;
+  padding-top: 24px;
+  padding-bottom: 24px;
   color: black;
-  font-weight: 600;
-  font-size: 20px;
-  border-bottom: 3px solid transparent;
-  transition: border-color 250ms ease-in-out;
+  font-weight: 500;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
 }
 
 .active {
-  color: red;
+  color: var(--btn-bg);
 }
 
-.navLink:hover {
-  border-bottom: 3px solid red;
+.navLink:hover,
+.navLink:focus {
+  transform: scale(1.1);
+  outline: none;
 }
