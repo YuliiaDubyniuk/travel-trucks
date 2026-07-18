@@ -14,30 +14,43 @@ const campersSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
+      .addCase(fetchAllCampers.pending, state => {
+        state.items = [];
+      })
       .addCase(fetchAllCampers.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.items = action.payload.items;
+      })
+      .addCase(fetchCamperDetails.pending, state => {
+        state.selectedCamper = null;
       })
       .addCase(fetchCamperDetails.fulfilled, (state, action) => {
         state.selectedCamper = action.payload;
       })
       .addMatcher(
-        ({ type }) => type.endsWith('pending'),
-        state => {
-          state.loading = true;
-        }
-      )
-      .addMatcher(
-        ({ type }) => type.endsWith('rejected'),
-        (state, action) => {
-          state.loading = false;
-          state.error = action.payload;
-        }
-      )
-      .addMatcher(
-        ({ type }) => type.endsWith('fulfilled'),
+        action =>
+          action.type.startsWith('campers/') &&
+          action.type.endsWith('/fulfilled'),
         state => {
           state.loading = false;
           state.error = null;
+        }
+      )
+      .addMatcher(
+        action =>
+          action.type.startsWith('campers/') &&
+          action.type.endsWith('/pending'),
+        state => {
+          state.loading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        action =>
+          action.type.startsWith('campers/') &&
+          action.type.endsWith('/rejected'),
+        (state, action) => {
+          state.loading = false;
+          state.error = action.payload || action.error.message;
         }
       );
   },

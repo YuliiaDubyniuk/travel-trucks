@@ -8,6 +8,7 @@ export const selectError = state => state.campers.error;
 
 // filters selectors
 export const selectFilters = state => state.filters;
+export const selectLocation = state => state.filters.location;
 export const selectFormFilter = state => state.filters.form;
 export const selectEngineFilter = state => state.filters.engine;
 export const selectTransmissionFilter = state => state.filters.transmission;
@@ -15,12 +16,16 @@ export const selectTransmissionFilter = state => state.filters.transmission;
 export const selectFilteredCampers = createSelector(
   [
     selectCampers,
+    selectLocation,
     selectFormFilter,
     selectEngineFilter,
     selectTransmissionFilter,
   ],
-  (campers, form, engine, transmission) => {
+  (campers, location, form, engine, transmission) => {
     return campers.filter(camper => {
+      const matchesLocation =
+        !location ||
+        camper.location.toLowerCase().includes(location.toLowerCase());
       const matchesForm = !form || camper.form === form;
 
       const matchesEngine = !engine || camper.engine === engine;
@@ -28,7 +33,9 @@ export const selectFilteredCampers = createSelector(
       const matchesTransmission =
         !transmission || camper.transmission === transmission;
 
-      return matchesForm && matchesEngine && matchesTransmission;
+      return (
+        matchesLocation && matchesForm && matchesEngine && matchesTransmission
+      );
     });
   }
 );

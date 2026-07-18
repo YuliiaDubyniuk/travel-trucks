@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import trucksReducer from './campersSlice';
+import campersReducer from './campersSlice';
 import filtersReducer from './filtersSlice';
 
 const rootReducer = combineReducers({
-  contacts: trucksReducer,
+  campers: campersReducer,
   filters: filtersReducer,
 });
 

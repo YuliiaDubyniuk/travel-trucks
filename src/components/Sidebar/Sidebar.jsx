@@ -1,28 +1,28 @@
 import { Formik, Form, Field } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetFilters, setFilters } from '../../redux/filtersSlice';
+import { selectFilters } from '../../redux/selectors';
+import Button from '../Button/Button';
+import Icon from '../Icon/Icon';
 import css from './Sidebar.module.css';
-import sprite from '../../assets/icons/sprite.svg'; // Path to your SVG sprite
 
-const initialValues = {
-  location: '',
-  camperForm: '',
-  engine: '',
-  transmission: '',
-};
+const Sidebar = () => {
+  const dispatch = useDispatch();
 
-const Sidebar = ({ onSubmit, onClear }) => {
-  const handleReset = resetForm => {
+  const filters = useSelector(selectFilters);
+
+  const handleSubmit = values => {
+    dispatch(setFilters(values));
+  };
+
+  const handleClear = resetForm => {
     resetForm();
-    if (onClear) {
-      onClear();
-    }
+    dispatch(resetFilters());
   };
 
   return (
     <aside className={css.sidebar}>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={values => onSubmit(values)}
-      >
+      <Formik initialValues={filters} onSubmit={handleSubmit}>
         {({ resetForm }) => (
           <Form className={css.form}>
             {/* location input section */}
@@ -31,20 +31,18 @@ const Sidebar = ({ onSubmit, onClear }) => {
                 Location
               </label>
               <div className={css.inputWrapper}>
-                <svg className={css.inputIcon} width="20" height="20">
-                  <use href={`${sprite}#icon-map-pin`} />
-                </svg>
+                <Icon name="map" className={css.inputIcon} />
                 <Field
                   type="text"
                   id="location"
                   name="location"
-                  placeholder="Kyiv, Ukraine"
+                  placeholder="City"
                   className={css.input}
                 />
               </div>
             </div>
 
-            <p className={css.filterHeader}>Filters</p>
+            <h3 className={css.filterHeader}>Filters</h3>
 
             {/* camper form filter */}
             <fieldset className={css.fieldset}>
@@ -53,7 +51,7 @@ const Sidebar = ({ onSubmit, onClear }) => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="camperForm"
+                    name="form"
                     value="alcove"
                     className={css.radioInput}
                   />
@@ -63,7 +61,7 @@ const Sidebar = ({ onSubmit, onClear }) => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="camperForm"
+                    name="form"
                     value="panel-van"
                     className={css.radioInput}
                   />
@@ -73,7 +71,7 @@ const Sidebar = ({ onSubmit, onClear }) => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="camperForm"
+                    name="form"
                     value="integrated"
                     className={css.radioInput}
                   />
@@ -83,7 +81,7 @@ const Sidebar = ({ onSubmit, onClear }) => {
                 <label className={css.radioLabel}>
                   <Field
                     type="radio"
-                    name="camperForm"
+                    name="form"
                     value="semi-integrated"
                     className={css.radioInput}
                   />
@@ -169,19 +167,24 @@ const Sidebar = ({ onSubmit, onClear }) => {
 
             {/* action buttons */}
             <div className={css.btnGroup}>
-              <button type="submit" className={css.searchBtn}>
+              <Button type="submit" variant="big" className={css.searchBtn}>
                 Search
-              </button>
-              <button
+              </Button>
+
+              <Button
                 type="button"
-                onClick={() => handleReset(resetForm)}
+                variant="big"
+                onClick={() => handleClear(resetForm)}
                 className={css.clearBtn}
               >
-                <svg className={css.clearIcon} width="16" height="16">
-                  <use href={`${sprite}#icon-clear`} />
-                </svg>
+                <Icon
+                  name="cross"
+                  className={css.clearIcon}
+                  width={12}
+                  height={12}
+                />
                 Clear filters
-              </button>
+              </Button>
             </div>
           </Form>
         )}

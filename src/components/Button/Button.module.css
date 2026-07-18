@@ -7,13 +7,13 @@
   transition: background-color ease-in-out 250ms;
 }
 
-.btn:hover,
-.btn:focus {
+.btn:hover {
   background-color: var(--active-btn);
 }
 
 .small {
   padding: 16px 43.5px;
+  width: fit-content;
 }
 
 .big {

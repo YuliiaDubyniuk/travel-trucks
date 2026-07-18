@@ -1,0 +1,156 @@
+.sidebar {
+  width: 360px;
+  height: fit-content;
+  background-color: var(--elements-bg);
+  border-radius: 16px;
+  padding: 24px;
+  flex-shrink: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* location input section */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.label,
+.legend {
+  color: rgba(108, 113, 123, 1);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 18px;
+  fill: none;
+  stroke: var(--sub-title-text);
+}
+
+.input {
+  width: 100%;
+  padding: 16px 20px 16px 48px;
+  background-color: var(--btn-text);
+  color: var(--sub-title-text);
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  line-height: 1.5;
+}
+
+.input::placeholder {
+  color: var(--text);
+}
+
+.filterHeader {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--sub-title-text);
+  margin: 0;
+}
+
+/* fieldset and radio groups */
+.fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.legend {
+  margin-bottom: 8px;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sub-title-text);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* custom radio styling */
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.customRadio {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  background-color: --btn-text;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+/* the inner dot */
+.customRadio::after {
+  content: '';
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.radioInput:checked ~ .customRadio::after {
+  display: block;
+}
+
+/* action buttons */
+.btnGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.clearBtn {
+  background-color: #ffffff;
+  color: var(--sub-title-text);
+  border: 1px solid var(--light-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clearBtn:hover {
+  background-color: var(--light-accent);
+}
+
+.clearIcon {
+  fill: none;
+  stroke: #101828;
+  stroke-width: 2;
+}

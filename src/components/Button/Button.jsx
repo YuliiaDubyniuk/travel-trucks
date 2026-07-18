@@ -7,20 +7,21 @@ export default function Button({
   variant = 'small',
   className = '',
   type = 'button',
+  ...props
 }) {
   const combinedClassName =
     `${css.btn} ${css[variant] ?? ''} ${className}`.trim();
 
   if (to) {
     return (
-      <Link to={to} className={combinedClassName}>
+      <Link to={to} className={combinedClassName} {...props}>
         {children}
       </Link>
     );
   }
 
   return (
-    <button type={type} className={combinedClassName}>
+    <button type={type} className={combinedClassName} {...props}>
       {children}
     </button>
   );
