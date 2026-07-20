@@ -1,12 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import { Suspense, lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-// import { selectError, selectLoading } from '../../redux/selectors';
-import Layout from '../../Layout/Layout';
+import { Suspense, lazy } from 'react';
+import Layout from '../Layout/Layout';
 import Loader from '../Loader/Loader';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
-import { fetchAllCampers } from '../../redux/campersOps';
-// import css from './App.module.css';
+import { ToastContainer } from 'react-toastify';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'));
@@ -15,12 +12,6 @@ const CamperDetailsPage = lazy(
 );
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchAllCampers());
-  }, [dispatch]);
-
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -33,6 +24,14 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={3500}
+        closeOnClick
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }

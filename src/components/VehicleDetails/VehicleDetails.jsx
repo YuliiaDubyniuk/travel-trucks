@@ -44,7 +44,7 @@ const VehicleDetails = ({
 
   return (
     <div className={css.techCard}>
-      <h2 className={css.sectionHeading}>Vehicle details</h2>
+      <h2 className={css.heading}>Vehicle details</h2>
 
       <ul className={css.badgeList}>
         {features.map((feature, idx) => (

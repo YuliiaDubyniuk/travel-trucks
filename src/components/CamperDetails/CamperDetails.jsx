@@ -1,18 +1,16 @@
 import CamperMedia from '../CamperMedia/CamperMedia';
-import CamperInfo from './CamperInfo';
-import VehicleDetails from './VehicleDetails';
+import CamperInfo from '../CamperInfo/CamperInfo';
+import VehicleDetails from '../VehicleDetails/VehicleDetails';
 import css from './CamperDetails.module.css';
 
 const CamperDetails = ({ camper }) => {
   return (
     <div className={css.topSection}>
-      <div className={css.topSection}>
-        <CamperMedia gallery={camper.gallery} />
+      <CamperMedia camper={camper} />
 
-        <div className={css.detailsSection}>
-          <CamperInfo camper={camper} />
-          <VehicleDetails camper={camper} />
-        </div>
+      <div className={css.detailsSection}>
+        <CamperInfo camper={camper} />
+        <VehicleDetails camper={camper} />
       </div>
     </div>
   );

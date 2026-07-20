@@ -1,0 +1,45 @@
+.mediaSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 638px;
+  width: 100%;
+}
+
+.mainImageWrapper {
+  width: 100%;
+  height: 505px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnailList {
+  display: flex;
+  gap: 32px;
+}
+
+.thumbnailItem {
+  width: 136px;
+  height: 144px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  transition: border-color 250ms ease-in-out;
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activeThumb {
+  border-color: var(--btn-bg);
+}

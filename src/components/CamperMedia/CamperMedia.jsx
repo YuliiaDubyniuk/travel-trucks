@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import css from './CamperMedia.module.css';
 
-const CamperMedia = ({ gallery }) => {
+const CamperMedia = ({ camper: { gallery, name } }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   return (
@@ -20,7 +20,11 @@ const CamperMedia = ({ gallery }) => {
             className={`${css.thumbnailItem} ${index === activeImageIndex ? css.activeThumb : ''}`}
             onClick={() => setActiveImageIndex(index)}
           >
-            <img src={image.thumb} alt={`Preview ${index + 1}`} />
+            <img
+              src={image.thumb}
+              alt={`Preview ${index + 1}`}
+              className={css.thumbImage}
+            />
           </li>
         ))}
       </ul>

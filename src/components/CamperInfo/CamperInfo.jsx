@@ -9,11 +9,12 @@ const CamperInfo = ({
       <h1 className={css.title}>{name}</h1>
 
       <div className={css.metaRow}>
-        <Icon name="star" />
-        <span>
+        <Icon name="star" width={16} height={16} className={css.starIcon} />
+        <span className={css.review}>
           {rating}({reviews.length} Reviews)
         </span>
-        <span>{location}</span>
+        <Icon name="map" width={16} height={16} />
+        <span className={css.location}> {location}</span>
       </div>
 
       <p className={css.price}>€{Number(price).toLocaleString('en-US')}</p>

@@ -1,0 +1,14 @@
+.errorPage {
+  width: 100%;
+  background-color: var(--elements-bg);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.33;
+  color: #ec383b;
+  margin-top: 200px;
+}

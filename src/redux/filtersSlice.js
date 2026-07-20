@@ -5,6 +5,7 @@ const initialState = {
   form: '',
   engine: '',
   transmission: '',
+  page: 1,
 };
 
 const filtersSlice = createSlice({
@@ -15,14 +16,17 @@ const filtersSlice = createSlice({
       return {
         ...state,
         ...action.payload,
+        page: 1,
       };
     },
-
+    incrementPage(state) {
+      state.page += 1;
+    },
     resetFilters() {
       return initialState;
     },
   },
 });
 
-export const { setFilters, resetFilters } = filtersSlice.actions;
+export const { setFilters, resetFilters, incrementPage } = filtersSlice.actions;
 export default filtersSlice.reducer;

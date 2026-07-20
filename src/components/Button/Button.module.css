@@ -1,4 +1,5 @@
 .btn {
+  font-weight: 500;
   color: var(--btn-text);
   background-color: var(--btn-bg);
   letter-spacing: -0.5%;

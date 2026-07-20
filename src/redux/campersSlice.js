@@ -3,10 +3,10 @@ import { fetchAllCampers, fetchCamperDetails } from './campersOps';
 
 const initialState = {
   items: [],
-  visibleItems: 4,
   selectedCamper: null,
   loading: false,
   error: null,
+  hasMore: true,
 };
 
 const campersSlice = createSlice({
@@ -14,11 +14,26 @@ const campersSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchAllCampers.pending, state => {
-        state.items = [];
+      .addCase(fetchAllCampers.pending, (state, action) => {
+        if (action.meta.arg.page === 1) {
+          state.items = [];
+          state.hasMore = true;
+        }
       })
       .addCase(fetchAllCampers.fulfilled, (state, action) => {
-        state.items = action.payload.items;
+        const incomingItems = action.payload.items;
+        const totalItems = action.payload.total;
+
+        const page = action.meta.arg.page;
+        if (page === 1) {
+          state.items = incomingItems;
+        } else {
+          state.items.push(...incomingItems);
+        }
+
+        if (state.items.length === totalItems) {
+          state.hasMore = false;
+        }
       })
       .addCase(fetchCamperDetails.pending, state => {
         state.selectedCamper = null;
@@ -29,18 +44,18 @@ const campersSlice = createSlice({
       .addMatcher(
         action =>
           action.type.startsWith('campers/') &&
-          action.type.endsWith('/fulfilled'),
+          action.type.endsWith('/pending'),
         state => {
-          state.loading = false;
+          state.loading = true;
           state.error = null;
         }
       )
       .addMatcher(
         action =>
           action.type.startsWith('campers/') &&
-          action.type.endsWith('/pending'),
+          action.type.endsWith('/fulfilled'),
         state => {
-          state.loading = true;
+          state.loading = false;
           state.error = null;
         }
       )

@@ -5,6 +5,7 @@
 .headerContainer {
   display: flex;
   gap: 450px;
+  padding-top: 0;
 }
 
 .logoLink {

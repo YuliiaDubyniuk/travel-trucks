@@ -22,7 +22,11 @@ const Sidebar = () => {
 
   return (
     <aside className={css.sidebar}>
-      <Formik initialValues={filters} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={filters}
+        enableReinitialize
+        onSubmit={handleSubmit}
+      >
         {({ resetForm }) => (
           <Form className={css.form}>
             {/* location input section */}
@@ -62,11 +66,11 @@ const Sidebar = () => {
                   <Field
                     type="radio"
                     name="form"
-                    value="panel-van"
+                    value="panelTruck"
                     className={css.radioInput}
                   />
                   <span className={css.customRadio}></span>
-                  Panel Van
+                  Panel Truck
                 </label>
                 <label className={css.radioLabel}>
                   <Field

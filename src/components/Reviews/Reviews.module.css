@@ -1,0 +1,62 @@
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 623px;
+}
+
+.reviewCard {
+  background-color: var(--elements-bg);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--btn-text);
+  color: var(--btn-bg);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  color: var(--sub-title-text);
+}
+
+.starsRow {
+  display: flex;
+  gap: 4px;
+}
+
+.activeStar {
+  fill: var(--active-star);
+}
+
+.inactiveStar {
+  fill: var(--light-accent);
+}
+
+.noReviews {
+  margin-top: 60px;
+  font-size: 20px;
+  color: var(--sub-title-text);
+}

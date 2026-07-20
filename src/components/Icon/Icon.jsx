@@ -2,8 +2,8 @@ import sprite from '../../assets/sprite.svg';
 
 export default function Icon({
   name,
-  width = 20,
-  height = 20,
+  width = 16,
+  height = 16,
   className = '',
 }) {
   return (
