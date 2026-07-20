@@ -9,7 +9,7 @@ const CamperDetails = ({ camper }) => {
       <CamperMedia camper={camper} />
 
       <div className={css.detailsSection}>
-        <CamperInfo camper={camper} />
+        <CamperInfo camper={camper} variant="details" />
         <VehicleDetails camper={camper} />
       </div>
     </div>

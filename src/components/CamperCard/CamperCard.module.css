@@ -20,47 +20,12 @@
   flex-direction: column;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 8px;
-}
-
-.title,
-.price {
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.33;
-  color: var(--sub-title-text);
-}
-
-.meta {
-  display: flex;
-  gap: 16px;
-}
-
-.metaItem {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--sub-title-text);
-}
-
-.starIcon {
-  fill: rgba(255, 197, 49, 1);
-}
-
-.description {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
 .features {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
+  margin-top: 24px;
 }
 
 .feature {
