@@ -42,6 +42,6 @@
 }
 
 .heroBtn {
-  background-color: var(rgba(130, 155, 145, 1));
+  background-color: rgba(130, 155, 145, 1);
   padding: 16px 48.5px;
 }
