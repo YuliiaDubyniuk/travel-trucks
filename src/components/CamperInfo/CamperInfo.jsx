@@ -13,7 +13,9 @@ const CamperInfo = ({
       <div className={css.titlePriceRow}>
         <h1 className={css.title}>{name}</h1>
         {isCard && (
-          <p className={css.price}>€{Number(price).toLocaleString('en-US')}</p>
+          <p
+            className={css.price}
+          >{`€${price.toFixed(2).replace('.', ',')}`}</p>
         )}
       </div>
       <div className={css.metaRow}>
@@ -27,7 +29,7 @@ const CamperInfo = ({
 
       {/* render price below meta row only on the details page variant */}
       {!isCard && (
-        <p className={css.price}>€{Number(price).toLocaleString('en-US')}</p>
+        <p className={css.price}>{`€${price.toFixed(2).replace('.', ',')}`}</p>
       )}
 
       <p className={`${css.description} ${isCard ? css.truncated : ''}`}>
